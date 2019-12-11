@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <title>Match'em</title>
+</head>
+
+<body>
+    <div class="controls inactive">
+        <div class="close-button"></div>
+        <div class="column">
+            <p>Colors</p>
+            <div class="option">
+                <div class="variant" style="background:#011627"></div>
+                <kbd class="key">Q</kbd>
+            </div>
+            <div class="option">
+                <div class="variant" style="background:#2EC4B6"></div>
+                <kbd class="key">W</kbd>
+            </div>
+            <div class="option">
+                <div class="variant" style="background:#E71D36"></div>
+                <kbd class="key">E</kbd>
+            </div>
+            <div class="option">
+                <div class="variant" style="background:#FF9F1C"></div>
+                <kbd class="key">R</kbd>
+            </div>
+        </div>
+        <div class="column">
+            <p>Shapes</p>
+            <div class="option">
+                <div class="variant">
+                    <img src="img/circle.png" alt="Circle">
+                </div>
+                <kbd class="key">U</kbd>
+            </div>
+            <div class="option">
+                <div class="variant">
+                    <img src="img/square.png" alt="Square">
+                </div>
+                <kbd class="key">I</kbd>
+            </div>
+            <div class="option">
+                <div class="variant">
+                    <img src="img/triangle.png" alt="Triangle">
+                </div>
+                <kbd class="key">O</kbd>
+            </div>
+            <div class="option">
+                <div class="variant">
+                    <img src="img/diamond.png" alt="Diamond">
+                </div>
+                <kbd class="key">P</kbd>
+            </div>
+        </div>
+    </div>
+    <div class="startTimer inactive"></div>
+    <div class="score-and-health-bar inactive">
+        <div class="health">
+        </div>
+        <p class="score">Score: 0</p>
+        <p class="points pointsIn inactive">+100</p>
+    </div>
+    <div class="hintsBar inactive">
+        <div class="column colors">
+            <div class="option blue active">
+                <div class="variant" style="background:#011627"></div>
+                <kbd class="key">Q</kbd>
+            </div>
+            <div class="option green">
+                <div class="variant" style="background:#2EC4B6"></div>
+                <kbd class="key">W</kbd>
+            </div>
+            <div class="option red">
+                <div class="variant" style="background:#E71D36"></div>
+                <kbd class="key">E</kbd>
+            </div>
+            <div class="option yellow">
+                <div class="variant" style="background:#FF9F1C"></div>
+                <kbd class="key">R</kbd>
+            </div>
+        </div>
+        <div class="column shapes">
+            <div class="option circle active">
+                <div class="variant">
+                    <img src="img/circle.png" alt="Circle">
+                </div>
+                <kbd class="key">U</kbd>
+            </div>
+            <div class="option rect">
+                <div class="variant">
+                    <img src="img/square.png" alt="Square">
+                </div>
+                <kbd class="key">I</kbd>
+            </div>
+            <div class="option trian">
+                <div class="variant">
+                    <img src="img/triangle.png" alt="Triangle">
+                </div>
+                <kbd class="key">O</kbd>
+            </div>
+            <div class="option diam">
+                <div class="variant">
+                    <img src="img/diamond.png" alt="Diamond">
+                </div>
+                <kbd class="key">P</kbd>
+            </div>
+        </div>
+    </div>
+    <div class="endGameScreen inactive">
+        <p class="endTitle">That's the end!</p>
+        <p class="endScore">Your score: 10000</p>
+        <p class="endCorrect"></p>
+        <p class="endInCorrect"></p>
+        <button class="button button-primary button-restart">
+            <p>Play again</p>
+        </button>
+        <button class="button button-secondary button-back">
+            <p>Back to menu</p>
+        </button>
+    </div>
+    <div class="menu menu-start">
+        <img src="img/game-logo-final.png" alt="Game Logo" class="logo logo-menu">
+        <p class="highscore">Highscore: 10000</p>
+        <button class="button button-primary button-start">
+            <p>Start</p>
+        </button>
+        <button class="button button-secondary button-controls">
+            <p>Controls</p>
+        </button>
+    </div>
+    <div class="menu menu-pause inactive">
+        <img src="img/game-logo-final.png" alt="Game Logo" class="logo logo-menu">
+        <button class="button button-primary button-resume">
+            <p>Resume</p>
+        </button>
+        <button class="button button-secondary button-controls">
+            <p>Controls</p>
+        </button>
+        <button class="button button-secondary button-back">
+            <p>Back to menu</p>
+        </button>
+    </div>
+    <canvas id="game-field"></canvas>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,404 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+#game-field {
+  display: flex;
+  background: #fdfffc;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  max-width: 800px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: row;
+  background: #fdfffc;
+  border-radius: 5px;
+  z-index: 3;
+  -webkit-box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.75);
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+
+    p{
+        font-weight: bold;
+        color: #011627;
+        font-size: 22px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .option {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      max-width: 300px;
+
+      .variant {
+        width: 100px;
+        height: 100px;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .key {
+        border: 2px solid #011627;
+        border-radius: 5px;
+        padding: 10px;
+        min-width: 60px;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.close-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 35px;
+  height: 35px;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0.3;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    left: 20px;
+    height: 35px;
+    width: 5px;
+    background: black;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.startTimer{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  color: #e71d36;
+  font-size: 120px;
+  font-weight: bold;
+}
+
+.score-and-health-bar {
+  position: fixed;
+  display: flex;
+  height: 10vh;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 3;
+  background: transparent;
+
+  .health {
+    height: 100%;
+    width: 200px;
+    margin-left: 40px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .heart {
+      width: 30%;
+      max-width: 80px;
+    }
+    
+    .heart:not(:last-of-type) {
+      margin-right: 10px;
+    }
+
+  }
+
+  .score {
+    padding: 0;
+    height: 100%;
+    width: 200px;
+    margin: 15px 50px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #011627;
+  }
+
+  .points{
+    position: absolute;
+    right: 110px;
+    top: 50px;
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #011627;
+  }
+
+}
+
+.hintsBar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+  justify-content: space-evenly;
+  z-index: 3;
+  background: transparent;
+
+  .column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-right: 20px;
+      padding: 10px;
+
+      .variant {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 5px;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .key {
+        border: 2px solid #011627;
+        border-radius: 5px;
+        padding: 5px;
+        min-width: 50px;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+    }
+
+    .option.active {
+      border: solid 2px #ff9f1c;
+    }
+  }
+}
+
+.drop {
+  animation: heartDrop 1s ease forwards;
+}
+
+.pointsIn {
+  animation: pointsIn 1s ease forwards;
+}
+
+.slideIn {
+  animation: slideIn 1s ease-out both;
+}
+
+.endGameScreen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fdfffc;
+
+  p{
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .endTitle {
+    font-size: 40px;
+  }
+
+
+}
+
+.menu {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 100px;
+  background: #fdfffc;
+
+  .logo-menu {
+    z-index: 2;
+    width: 50%;
+    max-width: 400px;
+    margin-bottom: 200px;
+  }
+
+  .highscore {
+    z-index: 2;
+    font-weight: bold;
+    color: #011627;
+    font-size: 26px;
+  }
+}
+
+.inactive {
+  display: none;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  width: 35%;
+  height: 50px;
+  max-width: 220px;
+  margin-bottom: 30px;
+  color: #fdfffc;
+  font-size: 26px;
+  z-index: 2;
+  position: relative;
+
+  p {
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50 50;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover::before {
+    transform: scaleX(1.2);
+  }
+}
+
+.button-primary {
+  background: #e71d36;
+
+  &::before {
+    background: #e71d36;
+  }
+}
+
+.button-secondary {
+  background: #011627;
+
+  &::before {
+    background: #011627;
+  }
+}
+
+.button-back {
+  background: #ff9f1c;
+
+  &::before {
+    background: #ff9f1c;
+  }
+}
+
+
+// hearth animations
+
+@keyframes heartDrop {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  0%{
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+//point animation
+
+@keyframes pointsIn {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
